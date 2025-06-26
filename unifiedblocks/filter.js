@@ -3,6 +3,7 @@ const path = require("path");
 const jsonc = require("jsonc");
 const { exit } = require("process");
 
+// itterates over files in a directory
 function forEachFile(directory, fn, recursive=false){
   let files = fs.readdirSync(directory);
   
@@ -18,15 +19,18 @@ function forEachFile(directory, fn, recursive=false){
   });
 }
 
+// no blocks -> exit
 if (!fs.existsSync("./BP/blocks")){
     exit(0);
 }
 
+// run for each block
 forEachFile("./BP/blocks", (data, file) => {
     let block = jsonc.parse(data);
     const id = block["minecraft:block"]["description"]["identifier"];
     let has_item = false;
 
+    // create proxy item
     if ("item" in block["minecraft:block"]){
         has_item = true;
 
@@ -72,6 +76,7 @@ forEachFile("./BP/blocks", (data, file) => {
         delete block["minecraft:block"]["item"];
     }
 
+    // create blocks.json entry
     if ("resource_definition" in block["minecraft:block"]){
         if (!fs.existsSync(`./RP`)){
             fs.mkdirSync(`./RP`);
@@ -92,11 +97,9 @@ forEachFile("./BP/blocks", (data, file) => {
         delete block["minecraft:block"]["resource_definition"];
     }
 
+    // create localization entries
     if ("texts" in block["minecraft:block"]){
-        // check for RP & texts folders
-        // get text entry
         Object.entries(block["minecraft:block"]["texts"]).forEach(([key, value]) => {
-            console.log(key);
             let text_path = `./RP/texts/${key}.lang`;
 
             if (!fs.existsSync(`./RP`)){
