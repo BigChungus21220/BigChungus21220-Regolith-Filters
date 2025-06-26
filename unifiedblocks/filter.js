@@ -112,7 +112,7 @@ forEachFile("./BP/blocks", (data, file) => {
                 texts = fs.readFileSync(text_path, "utf8");
             }
             let name = value;
-            
+
             texts += `\ntile.${id}.name=${name}\n`;
             if (has_item){
                 texts += `item.${id}=${name}\n`;
@@ -124,6 +124,8 @@ forEachFile("./BP/blocks", (data, file) => {
                 console.error("Failed to write to texts: " + e);
             }
         });
+
+        delete block["minecraft:block"]["texts"];
     }
 
     try {
