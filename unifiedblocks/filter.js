@@ -96,7 +96,7 @@ forEachFile("./BP/blocks", (data, file) => {
         // check for RP & texts folders
         // get text entry
         for (const [key, value] in block["minecraft:block"]["texts"]){
-            path = `./RP/texts/${key}.lang`;
+            let text_path = `./RP/texts/${key}.lang`;
 
             if (!fs.existsSync(`./RP`)){
                 fs.mkdirSync(`./RP`);
@@ -107,7 +107,7 @@ forEachFile("./BP/blocks", (data, file) => {
             }
 
             let texts = "";
-            if (fs.existsSync(path)){
+            if (fs.existsSync(text_path)){
                 texts = fs.readFileSync(`./RP/blocks.json`, "utf8");
             }
             let name = value;
@@ -117,7 +117,7 @@ forEachFile("./BP/blocks", (data, file) => {
             texts += `\ntile.${id}.name=${name}`;
 
             try {
-                fs.writeFileSync(path, texts);
+                fs.writeFileSync(text_path, texts);
             } catch (e) {
                 console.error("Failed to write to texts: " + e);
             }
