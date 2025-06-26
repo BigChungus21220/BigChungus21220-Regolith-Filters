@@ -112,10 +112,11 @@ forEachFile("./BP/blocks", (data, file) => {
                 texts = fs.readFileSync(text_path, "utf8");
             }
             let name = value;
+            
+            texts += `\ntile.${id}.name=${name}\n`;
             if (has_item){
                 texts += `item.${id}=${name}\n`;
             }
-            texts += `tile.${id}.name=${name}\n`;
 
             try {
                 fs.writeFileSync(text_path, texts);
