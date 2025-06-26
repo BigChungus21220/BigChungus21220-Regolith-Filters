@@ -95,7 +95,7 @@ forEachFile("./BP/blocks", (data, file) => {
     if ("texts" in block["minecraft:block"]){
         // check for RP & texts folders
         // get text entry
-        for (const [key, value] in block["minecraft:block"]["texts"]){
+        Object.entries(block["minecraft:block"]["texts"]).forEach(([key, value]) => {
             console.log(key);
             let text_path = `./RP/texts/${key}.lang`;
 
@@ -122,7 +122,7 @@ forEachFile("./BP/blocks", (data, file) => {
             } catch (e) {
                 console.error("Failed to write to texts: " + e);
             }
-        }
+        });
     }
 
     try {
