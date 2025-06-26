@@ -29,6 +29,13 @@ To install UnifiedBlocks to a Regolith project, run `regolith install unifiedblo
     "resource_definition": {
       // blocks.json entry
     },
+    // optional, creates localization entries for the block
+    "texts": {
+      // text file name : name of block
+      "en_US": "My Block",
+      "es_MX": "Mi Bloque"
+      // ...
+    },
     "components": {
       // standard block components
     }

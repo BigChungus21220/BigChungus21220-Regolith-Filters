@@ -25,8 +25,11 @@ if (!fs.existsSync("./BP/blocks")){
 forEachFile("./BP/blocks", (data, file) => {
     let block = jsonc.parse(data);
     const id = block["minecraft:block"]["description"]["identifier"];
+    let has_item = false;
 
     if ("item" in block["minecraft:block"]){
+        has_item = true;
+
         let item = {
             "format_version": "1.21.70",
             "minecraft:item": {
@@ -88,6 +91,38 @@ forEachFile("./BP/blocks", (data, file) => {
         }
 
         delete block["minecraft:block"]["resource_definition"];
+    }
+
+    if ("texts" in block["minecraft:block"]){
+        // check for RP & texts folders
+        // get text entry
+        for (const [key, value] in block["minecraft:block"]["texts"]){
+            path = `./RP/texts/${key}.lang`;
+
+            if (!fs.existsSync(`./RP`)){
+                fs.mkdirSync(`./RP`);
+            }
+
+            if (!fs.existsSync(`./RP/texts`)){
+                fs.mkdirSync(`./RP/texts`);
+            }
+
+            let texts = "";
+            if (fs.existsSync(path)){
+                texts = fs.readFileSync(`./RP/blocks.json`, "utf8");
+            }
+            let name = value;
+            if (has_item){
+                texts += `\nitem.${id}=${name}`;
+            }
+            texts += `\ntile.${id}.name=${name}`;
+
+            try {
+                fs.writeFileSync(path, texts);
+            } catch (e) {
+                console.error("Failed to write to texts: " + e);
+            }
+        }
     }
 
     try {
