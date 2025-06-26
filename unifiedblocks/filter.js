@@ -81,7 +81,6 @@ forEachFile("./BP/blocks", (data, file) => {
             blocks["format_version"] = "1.21.40";
         } else {
             blocks = jsonc.parse(fs.readFileSync(`./RP/blocks.json`, "utf8"));
-            console.log(blocks);
         }
         blocks[id] = structuredClone(block["minecraft:block"]["resource_definition"]);
         try {
