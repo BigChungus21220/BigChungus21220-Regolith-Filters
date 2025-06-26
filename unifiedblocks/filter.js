@@ -108,7 +108,7 @@ forEachFile("./BP/blocks", (data, file) => {
 
             let texts = "";
             if (fs.existsSync(text_path)){
-                texts = fs.readFileSync(`./RP/blocks.json`, "utf8");
+                texts = fs.readFileSync(text_path, "utf8");
             }
             let name = value;
             if (has_item){
