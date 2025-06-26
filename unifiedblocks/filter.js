@@ -96,6 +96,7 @@ forEachFile("./BP/blocks", (data, file) => {
         // check for RP & texts folders
         // get text entry
         for (const [key, value] in block["minecraft:block"]["texts"]){
+            console.log(key);
             let text_path = `./RP/texts/${key}.lang`;
 
             if (!fs.existsSync(`./RP`)){
@@ -112,9 +113,9 @@ forEachFile("./BP/blocks", (data, file) => {
             }
             let name = value;
             if (has_item){
-                texts += `\nitem.${id}=${name}`;
+                texts += `item.${id}=${name}\n`;
             }
-            texts += `\ntile.${id}.name=${name}`;
+            texts += `tile.${id}.name=${name}\n`;
 
             try {
                 fs.writeFileSync(text_path, texts);
