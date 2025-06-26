@@ -4,7 +4,7 @@ A simple filter that unifies block definitions into a single file.
 
 ### Installation
 
-To install UnifiedBlocks to a Regolith project, run regolith install unifiedblocks --profile=default or regolith install github.com/BigChungus21220/BigChungus21220-Regolith-Filters/unifiedblocks --profile=default.
+To install UnifiedBlocks to a Regolith project, run `regolith install unifiedblocks --profile=default` or `regolith install github.com/BigChungus21220/BigChungus21220-Regolith-Filters/unifiedblocks --profile=default`.
 
 ### Usage
 
