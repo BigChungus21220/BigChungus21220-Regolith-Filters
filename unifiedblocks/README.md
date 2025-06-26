@@ -1,0 +1,33 @@
+## UnifiedBlocks
+
+### Installation
+
+### Usage
+
+```json
+{
+  "format_version": "1.21.70", // works with any version with the same menu category syntax
+  "minecraft:block": {
+    "description": {
+      "identifier": "example:my_block",
+      "menu_category": {
+        "category": "nature"
+      }
+    },
+    // optional, creates a proxy item for this block
+    "item": {
+      // the menu category of the proxy item is copied from the block
+
+      // optional, sets the icon reference for the item
+      "icon": "example:item_texture_reference"
+    },
+    // optional, creates a blocks.json entry for this block
+    "resource_definition": {
+      // blocks.json entry
+    },
+    "components": {
+      // standard block components
+    }
+  }
+}
+```

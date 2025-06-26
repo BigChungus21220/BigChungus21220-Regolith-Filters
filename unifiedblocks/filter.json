@@ -1,0 +1,11 @@
+{
+  "filters": [
+    {
+      "runWith": "nodejs",
+      "script": "./filter.js",
+      "name": "UnifiedBlocks",
+      "description": "A filter that unifies block definitions into a single file",
+      "requirements": "./"
+    }
+  ]
+}
