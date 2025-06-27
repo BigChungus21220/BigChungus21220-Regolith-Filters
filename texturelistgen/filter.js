@@ -45,9 +45,9 @@ function addItemTextures(obj){
         if (/#.*/.test(str)){
             let path = str.slice(1);
             let name = "tlg:" + path.replaceAll("/", "_");
-            item_texture_data.push({
+            item_texture_data[name] = {
                 "textures": path
-            });
+            };
             return name;
         } else {
             return str;
