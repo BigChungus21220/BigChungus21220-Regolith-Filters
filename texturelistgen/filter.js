@@ -106,7 +106,26 @@ if (fs.existsSync("./RP/blocks.json")){
     }
 }
 
-let terrain_texture = jsonc.parse(fs.readFileSync(`./RP/textures/terrain_texture.json`, "utf8"));
+let terrain_texture = {};
+if (fs.existsSync(`./RP/textures/terrain_texture.json`)){
+    jsonc.parse(fs.readFileSync(`./RP/textures/terrain_texture.json`, "utf8"));
+} else {
+    if (!fs.existsSync(`./RP`)){
+        fs.mkdirSync(`./RP`);
+    }
+
+    if (!fs.existsSync(`./RP/textures`)){
+        fs.mkdirSync(`./RP/textures`);
+    }
+
+    terrain_texture = {
+        "resource_pack_name": "vanilla",
+        "texture_name": "atlas.terrain",
+        "padding": 8,
+        "num_mip_levels": 4,
+        "texture_data": {}
+    }
+}
 terrain_texture["texture_data"] = {...terrain_texture["texture_data"], ...terrain_texture_data};
 try {
     fs.writeFileSync("./RP/textures/terrain_texture.json", JSON.stringify(terrain_texture, null, 4));
@@ -114,7 +133,24 @@ try {
     console.error("Failed to write to terrain_texture.json: " + e);
 }
 
-let item_texture = jsonc.parse(fs.readFileSync(`./RP/textures/item_texture.json`, "utf8"));
+let item_texture = {};
+if (fs.existsSync(`./RP/textures/item_texture.json`)){
+    jsonc.parse(fs.readFileSync(`./RP/textures/item_texture.json`, "utf8"));
+} else {
+    if (!fs.existsSync(`./RP`)){
+        fs.mkdirSync(`./RP`);
+    }
+
+    if (!fs.existsSync(`./RP/textures`)){
+        fs.mkdirSync(`./RP/textures`);
+    }
+
+    item_texture = {
+        "resource_pack_name": "vanilla",
+        "texture_name": "atlas.items",
+        "texture_data": {}
+    }
+}
 item_texture["texture_data"] = {...item_texture["texture_data"], ...item_texture_data};
 try {
     fs.writeFileSync("./RP/textures/item_texture.json", JSON.stringify(item_texture, null, 4));
