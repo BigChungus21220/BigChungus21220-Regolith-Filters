@@ -108,7 +108,7 @@ if (fs.existsSync("./RP/blocks.json")){
 
 let terrain_texture = {};
 if (fs.existsSync(`./RP/textures/terrain_texture.json`)){
-    jsonc.parse(fs.readFileSync(`./RP/textures/terrain_texture.json`, "utf8"));
+    terrain_texture = jsonc.parse(fs.readFileSync(`./RP/textures/terrain_texture.json`, "utf8"));
 } else {
     if (!fs.existsSync(`./RP`)){
         fs.mkdirSync(`./RP`);
@@ -135,7 +135,7 @@ try {
 
 let item_texture = {};
 if (fs.existsSync(`./RP/textures/item_texture.json`)){
-    jsonc.parse(fs.readFileSync(`./RP/textures/item_texture.json`, "utf8"));
+    item_texture = jsonc.parse(fs.readFileSync(`./RP/textures/item_texture.json`, "utf8"));
 } else {
     if (!fs.existsSync(`./RP`)){
         fs.mkdirSync(`./RP`);
