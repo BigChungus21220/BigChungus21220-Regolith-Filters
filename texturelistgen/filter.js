@@ -88,7 +88,7 @@ if (fs.existsSync("./BP/blocks")){
         }
 
         try {
-            fs.writeFileSync("./BP/blocks" + file, JSON.stringify(block, null, 4));
+            fs.writeFileSync("./BP/blocks/" + file, JSON.stringify(block, null, 4));
         } catch (e) {
             console.error("Failed to write to block: " + e);
         }
@@ -103,7 +103,7 @@ if (fs.existsSync("./BP/items")){
         }
 
         try {
-            fs.writeFileSync("./BP/items" + file, JSON.stringify(item, null, 4));
+            fs.writeFileSync("./BP/items/" + file, JSON.stringify(item, null, 4));
         } catch (e) {
             console.error("Failed to write to item: " + e);
         }
