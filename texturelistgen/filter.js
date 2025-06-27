@@ -88,7 +88,7 @@ if (fs.existsSync("./BP/blocks")){
         }
 
         try {
-            fs.writeFileSync("./BP/blocks" + file, block);
+            fs.writeFileSync("./BP/blocks" + file, JSON.stringify(block), null, 4);
         } catch (e) {
             console.error("Failed to write to block: " + e);
         }
@@ -103,7 +103,7 @@ if (fs.existsSync("./BP/items")){
         }
 
         try {
-            fs.writeFileSync("./BP/items" + file, item);
+            fs.writeFileSync("./BP/items" + file, JSON.stringify(item), null, 4);
         } catch (e) {
             console.error("Failed to write to item: " + e);
         }
@@ -115,7 +115,7 @@ if (fs.existsSync("./RP/blocks.json")){
     blocks = addTerrainTextures(blocks);
 
     try {
-        fs.writeFileSync("./RP/blocks.json", blocks);
+        fs.writeFileSync("./RP/blocks.json", JSON.stringify(blocks), null, 4);
     } catch (e) {
         console.error("Failed to write to blocks.json: " + e);
     }
@@ -124,7 +124,7 @@ if (fs.existsSync("./RP/blocks.json")){
 let terrain_texture = jsonc.parse(fs.readFileSync(`./RP/textures/terrain_texture.json`, "utf8"));
 terrain_texture["texture_data"] = {...terrain_texture["texture_data"], ...terrain_texture_data};
 try {
-    fs.writeFileSync("./RP/textures/terrain_texture.json", terrain_texture);
+    fs.writeFileSync("./RP/textures/terrain_texture.json", JSON.stringify(terrain_texture), null, 4);
 } catch (e) {
     console.error("Failed to write to terrain_texture.json: " + e);
 }
@@ -132,7 +132,7 @@ try {
 let item_texture = jsonc.parse(fs.readFileSync(`./RP/textures/item_texture.json`, "utf8"));
 item_texture["texture_data"] = {...item_texture["texture_data"], ...item_texture_data};
 try {
-    fs.writeFileSync("./RP/textures/item_texture.json", item_texture);
+    fs.writeFileSync("./RP/textures/item_texture.json", JSON.stringify(item_texture), null, 4);
 } catch (e) {
     console.error("Failed to write to item_texture.json: " + e);
 }
