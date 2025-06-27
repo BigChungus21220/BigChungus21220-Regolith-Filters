@@ -41,7 +41,7 @@ let terrain_texture_data = {};
 let item_texture_data = {};
 
 function addItemTextures(obj){
-    return editStringsRecursive(item["minecraft:item"]["components"]["icon"], (str) => {
+    return editStringsRecursive(obj, (str) => {
         if (/#.*/.test(str)){
             let path = str.slice(1);
             let name = "tlg:" + path.replaceAll("/", "_");
@@ -56,7 +56,7 @@ function addItemTextures(obj){
 }
 
 function addTerrainTextures(obj){
-    return editStringsRecursive(item["minecraft:item"]["components"]["icon"], (str) => {
+    return editStringsRecursive(obj, (str) => {
         if (/#.*/.test(str)){
             let path = str.slice(1);
             let name = "tlg:" + path.replaceAll("/", "_");
@@ -74,17 +74,17 @@ if (fs.existsSync("./BP/blocks")){
     forEachFile("./BP/blocks", (data, file) => {
         let block = jsonc.parse(data);
         if ("minecraft:material_instances" in block["minecraft:block"]["components"]){
-            block["minecraft:item"]["components"]["minecraft:material_instances"] = addTerrainTextures(block["minecraft:item"]["components"]["minecraft:material_instances"]);
+            block["minecraft:block"]["components"]["minecraft:material_instances"] = addTerrainTextures(block["minecraft:block"]["components"]["minecraft:material_instances"]);
         }
 
         if ("minecraft:item_visual" in block["minecraft:block"]["components"]){
             if ("material_instances" in block["minecraft:block"]["components"]["minecraft:item_visual"]){
-                block["minecraft:item"]["components"]["minecraft:item_visual"]["material_instances"] = addTerrainTextures(block["minecraft:item"]["components"]["minecraft:item_visual"]["material_instances"]);
+                block["minecraft:block"]["components"]["minecraft:item_visual"]["material_instances"] = addTerrainTextures(block["minecraft:block"]["components"]["minecraft:item_visual"]["material_instances"]);
             }
         }
 
         if ("minecraft:destruction_particles" in block["minecraft:block"]["components"]){
-            block["minecraft:item"]["components"]["minecraft:destruction_particles"] = addTerrainTextures(block["minecraft:item"]["components"]["minecraft:destruction_particles"]);
+            block["minecraft:block"]["components"]["minecraft:destruction_particles"] = addTerrainTextures(block["minecraft:block"]["components"]["minecraft:destruction_particles"]);
         }
 
         try {
