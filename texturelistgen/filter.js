@@ -73,19 +73,7 @@ function addTerrainTextures(obj){
 if (fs.existsSync("./BP/blocks")){
     forEachFile("./BP/blocks", (data, file) => {
         let block = jsonc.parse(data);
-        if ("minecraft:material_instances" in block["minecraft:block"]["components"]){
-            block["minecraft:block"]["components"]["minecraft:material_instances"] = addTerrainTextures(block["minecraft:block"]["components"]["minecraft:material_instances"]);
-        }
-
-        if ("minecraft:item_visual" in block["minecraft:block"]["components"]){
-            if ("material_instances" in block["minecraft:block"]["components"]["minecraft:item_visual"]){
-                block["minecraft:block"]["components"]["minecraft:item_visual"]["material_instances"] = addTerrainTextures(block["minecraft:block"]["components"]["minecraft:item_visual"]["material_instances"]);
-            }
-        }
-
-        if ("minecraft:destruction_particles" in block["minecraft:block"]["components"]){
-            block["minecraft:block"]["components"]["minecraft:destruction_particles"] = addTerrainTextures(block["minecraft:block"]["components"]["minecraft:destruction_particles"]);
-        }
+        block = addTerrainTextures(block);
 
         try {
             fs.writeFileSync("./BP/blocks/" + file, JSON.stringify(block, null, 4));
@@ -98,9 +86,7 @@ if (fs.existsSync("./BP/blocks")){
 if (fs.existsSync("./BP/items")){
     forEachFile("./BP/items", (data, file) => {
         let item = jsonc.parse(data);
-        if ("minecraft:icon" in item["minecraft:item"]["components"]){
-            item["minecraft:item"]["components"]["minecraft:icon"] = addItemTextures(item["minecraft:item"]["components"]["minecraft:icon"]);
-        }
+        item = addItemTextures(item);
 
         try {
             fs.writeFileSync("./BP/items/" + file, JSON.stringify(item, null, 4));
