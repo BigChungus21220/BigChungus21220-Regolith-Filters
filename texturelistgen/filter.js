@@ -42,7 +42,7 @@ let item_texture_data = {};
 
 function addItemTextures(obj){
     return editStringsRecursive(obj, (str) => {
-        if (/#.*/.test(str)){
+        if (/%.*/.test(str)){
             let path = str.slice(1);
             let name = "tlg:" + path.replaceAll("/", "_");
             item_texture_data[name] = {
@@ -57,7 +57,7 @@ function addItemTextures(obj){
 
 function addTerrainTextures(obj){
     return editStringsRecursive(obj, (str) => {
-        if (/#.*/.test(str)){
+        if (/%.*/.test(str)){
             let path = str.slice(1);
             let name = "tlg:" + path.replaceAll("/", "_");
             terrain_texture_data[name] = {
