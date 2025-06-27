@@ -8,6 +8,20 @@ To install TextureListGen to a Regolith project, run `regolith install textureli
 
 ### Usage
 
+Rather than using texture keys from terrain_texture.json or item_texture.json, use #path/to/image
+
+Eg:
 ```json
-"#textures/blocks/my_block"
+{
+  "format_version": "1.21.70",
+  "minecraft:item": {
+    "description": {
+      "identifier": "eg:lance"
+    },
+    "components": {
+      "minecraft:icon": "#textures/items/lance"
+      // ...
+    }
+  }
+}
 ```
