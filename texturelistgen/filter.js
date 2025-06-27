@@ -79,7 +79,7 @@ if (fs.existsSync("./BP/blocks")){
         } catch (e) {
             console.error("Failed to write to block: " + e);
         }
-    });
+    }, true);
 }
 
 if (fs.existsSync("./BP/items")){
@@ -92,7 +92,7 @@ if (fs.existsSync("./BP/items")){
         } catch (e) {
             console.error("Failed to write to item: " + e);
         }
-    });
+    }, true);
 }
 
 if (fs.existsSync("./RP/blocks.json")){
