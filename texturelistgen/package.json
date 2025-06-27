@@ -1,0 +1,14 @@
+{
+  "name": "texturelistgen",
+  "version": "1.0.0",
+  "main": "filter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "BigChungus21220",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "jsonc": "^2.0.0"
+  }
+}
