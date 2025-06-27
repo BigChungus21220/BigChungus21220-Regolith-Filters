@@ -22,12 +22,12 @@ function forEachFile(directory, fn, recursive=false){
 function editStringsRecursive(data, fn){
     if (typeof data === "object"){
         for (const key in data){
-            data[key] = editStringsRecursive(data[key]);
+            data[key] = editStringsRecursive(data[key], fn);
         }
         return data;
     } else if (Array.isArray(data)){
         for (let i = 0; i < data.length; i++){
-            data[i] = editStringsRecursive(data[i]);
+            data[i] = editStringsRecursive(data[i], fn);
         }
         return data;
     } else if (typeof data === "string") {
