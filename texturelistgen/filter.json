@@ -1,10 +1,10 @@
 {
+  "description": "A filter that generates texture lists automatically",
   "filters": [
     {
       "runWith": "nodejs",
       "script": "./filter.js",
       "name": "TextureListGen",
-      "description": "A filter that generates texture lists automatically",
       "requirements": "./"
     }
   ]

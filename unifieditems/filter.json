@@ -1,10 +1,10 @@
 {
-  "description": "A filter that unifies block definitions into a single file",
+  "description": "A filter that unifies item definitions into a single file",
   "filters": [
     {
       "runWith": "nodejs",
       "script": "./filter.js",
-      "name": "UnifiedBlocks",
+      "name": "UnifiedItems",
       "requirements": "./"
     }
   ]
