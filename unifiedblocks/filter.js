@@ -34,6 +34,7 @@ forEachFile("./BP/blocks", (data, file) => {
     } catch (err) {
         console.error(`Error parsing ${file}: ` + err);
         success = false;
+        return;
     }
 
     const id = block["minecraft:block"]["description"]["identifier"];
@@ -77,11 +78,13 @@ forEachFile("./BP/blocks", (data, file) => {
                 fs.writeFileSync(itemPath, JSON.stringify(item, null, 4));
             } catch (e) {
                 console.error("Failed to write item: " + e);
-                success = false;
+                success = false; 
+                return;
             }
         } else {
             console.error(`Could not generate item file for ${id}. Item for ${itemPath} already exists.`);
             success = false;
+            return;
         }
 
         delete block["minecraft:block"]["item"];
@@ -104,6 +107,7 @@ forEachFile("./BP/blocks", (data, file) => {
         } catch (e) {
             console.error("Failed to write to blocks.json: " + e);
             success = false;
+            return;
         }
 
         delete block["minecraft:block"]["resource_definition"];
@@ -138,6 +142,7 @@ forEachFile("./BP/blocks", (data, file) => {
             } catch (e) {
                 console.error("Failed to write to texts: " + e);
                 success = false;
+                return;
             }
         });
 
@@ -149,6 +154,7 @@ forEachFile("./BP/blocks", (data, file) => {
     } catch (e) {
         console.error("Failed to write to block: " + e);
         success = false;
+        return;
     }
 
 }, true);
